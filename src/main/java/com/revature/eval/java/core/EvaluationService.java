@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +18,9 @@ public class EvaluationService {
 		char[] reversed = new char[string.length()];
 		for (int i = reversed.length - 1, j=0; i >= 0; i--, j++) {
 			reversed[j] = string.charAt(i);
+			System.out.println(reversed);
 		}
-		return new String(reversed);
+		return  new String();
 	}
 
 	/**
@@ -31,7 +33,20 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String acronyms = " ";
+		//if(phrase.length() == 0)
+			//return;
+//			System.out.print(Character.toUpperCase( 
+//	            phrase.charAt(0))); 
+			acronyms += phrase.toUpperCase().charAt(0);
+			for (int i = 1; i <= phrase.length() - 1; i++) 
+	            if (phrase.charAt(i - 1) == ' ' || phrase.charAt(i - 1) == '-') {
+	            	acronyms += phrase.toUpperCase().charAt(i);
+	            }
+				//System.out.print(" " + Character.toUpperCase( 
+	                                        //phrase.charAt(i + 1)));
+			System.out.println(acronyms);
+		return phrase;
 	}
 
 	/**
@@ -85,16 +100,29 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
+			if(sideOne == sideTwo && sideTwo == sideThree) {
+				System.out.println("Triangle is Equilateral");
+				return true;
+			}else
 			return false;
 		}
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
+			if(sideOne == sideThree && sideOne != sideTwo) {
+				System.out.println("Triangle is Isosceles");
+				return true;
+			//System.out.println();
+			}else
 			return false;
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
+			if(sideOne != sideTwo && sideTwo!= sideThree) {
+				System.out.println("This is Scalene");
+				return true;
+			}else
 			return false;
 		}
 
@@ -117,7 +145,53 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		//this.string = string.toCharArray();
+		//char letter = ' ';
+		
+//		char[] arrayWord = string.toCharArray();
+//        int score = 0;
+//        
+//        for ( Character letter : arrayWord) 
+//            //score += getScrabbleScore(string);
+//        	score += getValueLetter(letter);
+//        
+//        	int getValueLetter(char letter) {
+        //char letter = ' ';
+		int score = 0;
+	    String upperWord = string.toUpperCase();
+	    for (int i = 0; i < upperWord.length(); i++){
+	        char calculatedLetter = upperWord.charAt(i);
+	        score += calculatedLetter;
+	        System.out.println(score);
+	        
+            switch (calculatedLetter){
+                case 'G':
+                case 'D': return 2;
+
+                case 'B':
+                case 'C':
+                case 'M':
+                case 'P': return 3;
+
+                case 'F':
+                case 'H':
+                case 'V':
+                case 'W':
+                case 'Y': return 4;
+
+                case 'K': return 5;
+
+                case 'J':
+                case 'X': return 8;
+
+                case 'Q':
+                case 'Z': return 10;
+
+                default: return 1;
+            }
+        }
+        return score;
+        //return 0;
 	}
 
 	/**
@@ -153,7 +227,14 @@ public class EvaluationService {
 	 */
 	public String cleanPhoneNumber(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String input = "1234567890";
+		string = String.format("(%s) %s-%s",
+	            input.substring(0, 3),
+	            input.substring(3, 6),
+	            input.substring(6, 10));
+		System.out.println(string);
+		return string;
+		
 	}
 
 	/**
@@ -167,7 +248,23 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		//String input;
+		//int num;
+		Map<String, Integer> map = new HashMap<String, Integer> ();
+		String[] strings = string.split(" ");
+		for (String s:strings) {
+		    
+		    if (!map.containsKey(s)) {  // first time we've seen this string
+		      map.put(s, 1);
+		    }
+		    else {
+		      int count = map.get(s);
+		      map.put(s, count + 1);
+		    }
+		  }
+		System.out.println(map);
+		  return map;
+		//return null;
 	}
 
 	/**
