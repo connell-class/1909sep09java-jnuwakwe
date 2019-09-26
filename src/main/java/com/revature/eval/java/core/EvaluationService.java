@@ -2,6 +2,7 @@ package com.revature.eval.java.core;
 
 import java.lang.reflect.Array;
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -771,7 +772,8 @@ public class EvaluationService {
 
         Temporal date = amount.addTo(given);
 
-        return date;
+//        return date;
+		return given.plus(1_000_000_000, ChronoUnit.SECONDS);
 		//return null;
 	}
 
