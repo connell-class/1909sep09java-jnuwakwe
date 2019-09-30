@@ -457,7 +457,7 @@ int size = sortedList.size();
         if(orig == result){
             return true;
         }
-      
+        else
         return  false;
 	}
 
@@ -479,6 +479,7 @@ int size = sortedList.size();
             while (n % i == 0) {
                 factors.add(i);
                 n /= i;
+                //i--;
             }
         }
         if (n > 1) {
@@ -573,14 +574,14 @@ int size = sortedList.size();
 	 */
 	public int calculateNthPrime(int i) {
 		// TODO Write an implementation for this method declaration
-		Scanner sc = new Scanner(System.in);
+		//Scanner sc = new Scanner(System.in);
 	    System.out.print("Enter n to compute the nth prime number: ");
-	    int nth = sc.nextInt(); 
+	    //int nth = sc.nextInt(); 
 	    int num, count;
 	    num=1;
 	    count=0;
 	 
-	    while (count < nth){
+	    //while (count < nth){
 	      num=num+1;
 	      for (i = 2; i <= num; i++){ //Here we will loop from 2 to num
 	        if (num % i == 0) {
@@ -590,8 +591,8 @@ int size = sortedList.size();
 	      if ( i == num){//if it is a prime number
 	        count = count+1;
 	      }
-	    }
-	    System.out.println("Value of nth prime: " + num);
+	   // }
+	    //System.out.println("Value of nth prime: " + num);
 		return 0;
 	}
 
@@ -792,8 +793,8 @@ int size = sortedList.size();
 
         Temporal date = amount.addTo(given);
 
-//        return date;
-		return given.plus(1_000_000_000, ChronoUnit.SECONDS);
+        return date;
+		//return given.plus(1_000_000_000, ChronoUnit.SECONDS);
 		//return null;
 	}
 
