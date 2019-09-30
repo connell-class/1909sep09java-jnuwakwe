@@ -330,29 +330,49 @@ public class EvaluationService {
 
 		public int indexOf(T t) {
 			// TODO Write an implementation for this method declaration
-			int begin = 0;
-			int last = T;
-			int mid = 0;
-			//T t;
-			//int index = Collections.binarySearch(sortedList, key);
-//			t = sortedList.get(mid);
-//            if(t.equals(string)) {
-//               break;
-			while(begin <= last) {
-				mid = (begin + last) / 2;
-				if(T < t) {
-					begin = mid + 1;
-				}
-				else if(T > t) {
-					last = mid - 1;
-					return mid;
-				}
-				else {
-					return mid;
-				}
-// NOTE: Use String concatenation and char with new String to solve this
-			}
-			return -1;
+//			int begin = 0;
+//			int last = T;
+//			int mid = 0;
+//			//T t;
+//			//int index = Collections.binarySearch(sortedList, key);
+////			t = sortedList.get(mid);
+////            if(t.equals(string)) {
+////               break;
+//			while(begin <= last) {
+//				mid = (begin + last) / 2;
+//				if(T < t) {
+//					begin = mid + 1;
+//				}
+//				else if(T > t) {
+//					last = mid - 1;
+//					return mid;
+//				}
+//				else {
+//					return mid;
+//				}
+//// NOTE: Use String concatenation and char with new String to solve this
+//			}
+//			return -1;
+			
+int size = sortedList.size();
+            
+            int min=0;
+            int max=size-1;
+            int mid=0;
+            T l;
+            
+            for(int i =0;i<size;i++) {
+                mid = (min+max)/2;
+                l = sortedList.get(mid);
+                if(l.equals(t)) {
+                    break;
+                }else if ((int)l < (int)t) {
+                    min = (int)mid+1;
+                }else if ((int)l > (int)t) {
+                    max = (int)mid-1;
+                }
+            }
+			return max;
 		}
 
 		public BinarySearch(List<T> sortedList) {
@@ -765,7 +785,7 @@ public class EvaluationService {
 	public Temporal getGigasecondDate(Temporal given) {
 		// TODO Write an implementation for this method declaration
 		final long gigasecond = 1000000000;
-        final long gigaDays = gigasecond / 60 / 60 / 24;
+        final long gigaDays = gigasecond / 60 / 60 /24;
         System.out.println(gigaDays);
 
         Duration amount = Duration.ofDays(gigaDays);
