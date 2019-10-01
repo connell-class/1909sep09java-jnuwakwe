@@ -2,6 +2,8 @@ package com.revature.eval.java.core;
 
 import java.lang.reflect.Array;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
@@ -786,6 +788,11 @@ int size = sortedList.size();
 	public Temporal getGigasecondDate(Temporal given) {
 		// TODO Write an implementation for this method declaration
 		final long gigasecond = 1000000000;
+		if(given instanceof LocalDateTime) {
+			given.plus(1_000_000_000, ChronoUnit.SECONDS);
+		}
+		LocalDate dt = LocalDate.parse("00-00-00");
+		LocalDateTime dt1 = dt.atStartOfDay();
         final long gigaDays = gigasecond / 60 / 60 /24;
         System.out.println(gigaDays);
 
@@ -793,7 +800,7 @@ int size = sortedList.size();
 
         Temporal date = amount.addTo(given);
 
-        return date;
+        return dt1;
 		//return given.plus(1_000_000_000, ChronoUnit.SECONDS);
 		//return null;
 	}
